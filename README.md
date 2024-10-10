@@ -9,9 +9,9 @@
 > 
 
 
-### Restructuration du dépôt :
+### Structuration du dépôt :
 
-Pour améliorer l'organisation et l'accessibilité, le contenu de ce dépôt a été transféré dans des dépôts séparés en fonction des catégories :
+Pour améliorer l'organisation et l'accessibilité, le contenu de ce dépôt a été indexé dans ces catégories :
 
 - **[Voix](https://github.com/OxiWanV2/eggs4pterodactylpanel/tree/master/voice_servers)**
 - **[Base de données](https://github.com/OxiWanV2/eggs4pterodactylpanel/tree/master/database)**
