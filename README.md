@@ -1,6 +1,6 @@
 # Dépôt des œufs de Parker
 
-> [!INFORMATION]
+> [!IMPORTANT]
 > Ce projet va permettre de donner une seconde vie aux eggs pterodactyl
 > 
 > ----
