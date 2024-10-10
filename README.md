@@ -3,11 +3,10 @@
 > [!IMPORTANT]
 > Ce projet va permettre de donner une seconde vie aux eggs pterodactyl
 > 
-> ----
 > 
 > Nous allons apporter des mises à jour, des nouveaux jeux, ainsi que des optimisations.
 > 
-
+----
 
 ### Structuration du dépôt :
 
