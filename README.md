@@ -5,7 +5,8 @@
 > 
 > ----
 > 
-> Nous allons apporter des mises à jour, des nouveaux jeux, ainsi que des optimisations
+> Nous allons apporter des mises à jour, des nouveaux jeux, ainsi que des optimisations.
+> 
 
 
 ### Restructuration du dépôt :
