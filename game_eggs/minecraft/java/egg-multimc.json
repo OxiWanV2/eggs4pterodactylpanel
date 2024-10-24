@@ -1,0 +1,120 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-10-24T22:51:21+02:00",
+    "name": "MultiMC",
+    "author": "oxidev@perso.be",
+    "description": "Permet de cr\u00e9er un serveur sous Forge ou sur SpigotMC",
+    "features": null,
+    "docker_images": {
+        "Java 21": "ghcr.io\/pterodactyl\/yolks:java_21",
+        "Java 19": "ghcr.io\/pterodactyl\/yolks:java_19",
+        "Java 18": "ghcr.io\/pterodactyl\/yolks:java_18",
+        "Java 17": "ghcr.io\/pterodactyl\/yolks:java_17",
+        "Java 16": "ghcr.io\/pterodactyl\/yolks:java_16",
+        "Java 11": "ghcr.io\/pterodactyl\/yolks:java_11",
+        "Java 9": "ghcr.io\/pterodactyl\/yolks:java_9",
+        "Java 8": "ghcr.io\/pterodactyl\/yolks:java_8",
+        "Java 7": "ghcr.io\/pterodactyl\/yolks:java_7"
+    },
+    "file_denylist": [],
+    "startup": ".\/run.sh",
+    "config": {
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"query.port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
+        "logs": "{}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# Par OxiWan\r\n# Permet d'installer Forge ou PaperMC avec le m\u00eame eggs\r\n\r\nif [ -z \"$LICENCE\" ]; then\r\n    echo \"Erreur : la variable LICENCE n'est pas d\u00e9finie.\"\r\n    exit 1\r\nfi\r\n\r\nINSTALL_URL=\"https:\/\/sh.minenode.fr\/pterodactyl\/eggs\/MultiMC\/install.php?api_key=${LICENCE}\"\r\n\r\necho \"Installation des d\u00e9pendances n\u00e9cessaires (curl et jq)...\"\r\napt update && apt install -y curl jq\r\n\r\necho \"T\u00e9l\u00e9chargement du script d'installation...\"\r\ncurl -o install_script.sh \"$INSTALL_URL\"\r\n\r\nif [ ! -f install_script.sh ]; then\r\n    echo \"Erreur de t\u00e9l\u00e9chargement du script d'installation.\"\r\n    exit 1\r\nfi\r\n\r\nchmod +x install_script.sh\r\n\r\necho \"Ex\u00e9cution du script d'installation...\"\r\n.\/install_script.sh",
+            "container": "openjdk:8-jdk-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Quel JAR installer",
+            "description": "Permet de definir si nous voulons utiliser Forge ou PaperMC",
+            "env_variable": "JAR_TYPE",
+            "default_value": "papermc",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:PaperMC,Forge",
+            "field_type": "text"
+        },
+        {
+            "name": "Version de Minecraft",
+            "description": "La version de Minecraft",
+            "env_variable": "MINECRAFT_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:9",
+            "field_type": "text"
+        },
+        {
+            "name": "Nom du fichier .jar",
+            "description": "Le nom du jarfile du serveur avec lequel ex\u00e9cuter le serveur.",
+            "env_variable": "SERVER_JARFILE",
+            "default_value": "server.jar",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/",
+            "field_type": "text"
+        },
+        {
+            "name": "Version de Forge",
+            "description": "Version sp\u00e9cifique de Forge \u00e0 installer.",
+            "env_variable": "FORGE_VERSION",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "Type de build Forge",
+            "description": "Choisir entre le build recommand\u00e9 (recommended) ou le dernier build (latest) pour la version de Forge.",
+            "env_variable": "BUILD_TYPE",
+            "default_value": "recommended",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:recommended,latest",
+            "field_type": "text"
+        },
+        {
+            "name": "Num\u00e9ro de build Paper",
+            "description": "Num\u00e9ro du build Paper \u00e0 installer. Si vide, le dernier build disponible sera utilis\u00e9.",
+            "env_variable": "BUILD_NUMBER",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "URL personnalis\u00e9e de t\u00e9l\u00e9chargement",
+            "description": "URL de t\u00e9l\u00e9chargement personnalis\u00e9e pour un JAR sp\u00e9cifique. Si fournie, le script utilisera cette URL pour t\u00e9l\u00e9charger le fichier au lieu de l'API officielle de Paper ou Forge.",
+            "env_variable": "DL_PATH",
+            "default_value": "",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "nullable|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "Votre clef de licence",
+            "description": "Indiquer la clef de licence pour continuer !",
+            "env_variable": "LICENCE",
+            "default_value": "",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": "required",
+            "field_type": "text"
+        }
+    ]
+}
