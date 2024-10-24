@@ -14,7 +14,7 @@ Pour améliorer l'organisation et l'accessibilité, le contenu de ce dépôt a �
 
 - **[Voix](https://github.com/OxiWanV2/eggs4pterodactylpanel/tree/master/voice_servers)**
 - **[Base de données](https://github.com/OxiWanV2/eggs4pterodactylpanel/tree/master/database)**
-- **[Jeux](https://github.com/OxiWanV2/eggs4pterodactylpanel/tree/master/games)**
+- **[Jeux](https://github.com/OxiWanV2/eggs4pterodactylpanel/tree/master/game_eggs)**
 - **[Générique](https://github.com/OxiWanV2/eggs4pterodactylpanel/tree/master/generic)**
 - **[Minecraft](https://github.com/OxiWanV2/eggs4pterodactylpanel/tree/master/minecraft)**
 - **[Surveillance](https://github.com/OxiWanV2/eggs4pterodactylpanel/tree/master/monitoring)**
